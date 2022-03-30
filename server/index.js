@@ -150,6 +150,28 @@ app.get("/jan_08", (req, res) => {
     })
 })
 
+app.get("jan_22/get/:sr_no", (req, res) => {
+    const { sr_no } = req.params;
+    const sqlGet = "SELECT * FROM nse_app.jan_22 where sr_no = ?";
+    db.query(sqlGet, sr_no, (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+        res.send(result);
+    });
+})
+
+app.put("jan_22/update/:sr_no", (res,req) => {
+    const { sr_no } = req.params;
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
+    const sqlUpdate = "UPDATE nse_app.jan_22 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?";
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+        res.send(result);
+    }); 
+})
 
 app.listen(5000, () => {
     console.log("Server is running on port 5000");

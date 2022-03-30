@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Home/>} />
         <Route path='/update' element={<AddEdit/>} />
-        <Route path='/view' element={<View/>} />
+        <Route path='/view/:sr_no' element={<View/>} />
         <Route path='/jan_08' element={<Jan_08/>} />
         <Route path='/jan_09' element={<Jan_09/>} />
         <Route path='/jan_10' element={<Jan_10/>} />

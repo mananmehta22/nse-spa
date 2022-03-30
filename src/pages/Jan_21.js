@@ -69,4 +69,4 @@ const Jan_21 = () => {
   )
 };
 
-export default Jan_21
+export default Jan_21;
