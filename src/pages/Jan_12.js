@@ -52,10 +52,10 @@ const Jan_12 = () => {
                 <td>{item.monthly_return}</td>
                 <td>{item.avg_impact_cost}</td>
                 <td>
-                  <Link to={'/update_12/${item.sr_no}'}>
+                  <Link to={`/update_12/${item.sr_no}`}>
                   <button className='btn btn-edit'>Edit</button>
                   </Link>
-                  <Link to={'/view_12/${item.sr_no}'}>
+                  <Link to={`/view_12/${item.sr_no}`}>
                   <button className='btn btn-view'>View</button>
                   </Link>
                 </td>

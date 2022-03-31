@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { toast } from 'react-toastify'
 import './Format.css'
+import { toast } from 'react-toastify'
+import axios from 'axios';
 
 const Jan_08 = () => {
-  const [data, setData] = useState([]);
+const [data, setData] = useState([]);
 
   const loadData = async () => {
     const response = await axios.get("http://localhost:5000/jan_08");
@@ -52,10 +52,10 @@ const Jan_08 = () => {
                 <td>{item.monthly_return}</td>
                 <td>{item.avg_impact_cost}</td>
                 <td>
-                  <Link to={'/update_08/${item.sr_no}'}>
+                  <Link to={`/update_08/${item.sr_no}`}>
                   <button className='btn btn-edit'>Edit</button>
                   </Link>
-                  <Link to={'/view_08/${item.sr_no}'}>
+                  <Link to={`/view_08/${item.sr_no}`}>
                   <button className='btn btn-view'>View</button>
                   </Link>
                 </td>
@@ -69,4 +69,4 @@ const Jan_08 = () => {
   )
 }
 
-export default Jan_08;
+export default Jan_08
