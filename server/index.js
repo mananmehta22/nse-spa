@@ -3,11 +3,16 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
 
+const host = process.env.HOST;
+const user = process.env.USER
+const password = process.env.PASSWORD
+const database = process.env.DATABASE
+
 const db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "nse_app"
+    host: `${host}`,
+    user: `${user}`,
+    password: `${password}`,
+    database: `${database}`
 });
 
 const app = express();
