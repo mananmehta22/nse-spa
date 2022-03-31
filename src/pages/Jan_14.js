@@ -18,6 +18,7 @@ const Jan_14 = () => {
 
   return (
     <div style={{marginTop: "160px"}}>
+      <h1>January 2014 Report</h1>
       <table className='styled-table'>
         <thead>
           <tr>
@@ -50,7 +51,7 @@ const Jan_14 = () => {
                 <td>{item.r2}</td>
                 <td>{item.volatility}</td>
                 <td>{item.monthly_return}</td>
-                <td>{item.avg_impact_cost}</td>
+                <td>{item.avg_imp_cost}</td>
                 <td>
                   <Link to={`/update_14/${item.sr_no}`}>
                   <button className='btn btn-edit'>Edit</button>

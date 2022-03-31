@@ -55,7 +55,7 @@ const View = () => {
           <br  />
           <br  />
           <strong>Free Float</strong>
-          <span>{user.weightage}</span>
+          <span>{user.free_float}</span>
           <br  />
           <br  />
           <br  />
@@ -97,13 +97,13 @@ const View = () => {
           <br  />
           <br  />
           <strong>Average Impact Cost</strong>
-          <span>{user.avg_impact_cost}</span>
+          <span>{user.avg_imp_cost}</span>
           <br  />
           <br  />
           <br  />
           <br  />
           <br  />
-          <Link to="/">
+          <Link to="/jan_21">
             <div className='btn btn-edit'>Go Back</div>
           </Link>
         </div>

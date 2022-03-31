@@ -16,12 +16,12 @@ const initialState = {
   r2:"",
   volatility:"",
   monthly_return:"",
-  avg_impact_cost:""
+  avg_imp_cost:""
 }
 
 const AddEdit = () => {
   const [ state, setState ] = useState(initialState);
-  const { security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost } = state;
+  const { security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost } = state;
 
   const history = useNavigate();
 
@@ -35,7 +35,7 @@ const AddEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!security_symbol || ! security_name || !industry || !equity_cap || !free_float || !weightage || !r2 || !volatility || !monthly_return || !avg_impact_cost) {
+    if (!security_symbol || ! security_name || !industry || !equity_cap || !free_float || !weightage || !r2 || !volatility || !monthly_return || !avg_imp_cost) {
         toast.error("Please provide value for each field");
     }
     else {
@@ -51,15 +51,15 @@ const AddEdit = () => {
             r2, 
             volatility, 
             monthly_return, 
-            avg_impact_cost
+            avg_imp_cost
           })
         .then(() => {
-            setState({security_symbol:"", security_name:"", industry:"", equity_cap:"", free_float:"", weightage:"", beta:"", r2:"", volatility:"", monthly_return:"", avg_impact_cost:""})
+            setState({security_symbol:"", security_name:"", industry:"", equity_cap:"", free_float:"", weightage:"", beta:"", r2:"", volatility:"", monthly_return:"", avg_imp_cost:""})
           })
         .catch((error) => toast.error(error.response.data));
       toast.success("Fields Updated Successfully")
     }
-    setTimeout(() => history("/"),500);
+    setTimeout(() => history("/jan_14"),500);
   };
 
   const handleInputChange = (e) => {
@@ -98,9 +98,9 @@ const AddEdit = () => {
           <label htmlFor='Monthly Return'>Monthly Return</label>
           <input type="number" id="monthly_return" placeholder='Enter Monthly Return ...' onChange={handleInputChange} value={monthly_return} />
           <label htmlFor='Average Impact Cost'>Average Impact Cost</label>
-          <input type="number" id="avg_impact_cost" placeholder='Enter Average Impact Cost ...' onChange={handleInputChange} value={avg_impact_cost} />
+          <input type="number" id="avg_imp_cost" placeholder='Enter Average Impact Cost ...' onChange={handleInputChange} value={avg_imp_cost} />
           <input type="submit" value="Update" />
-          <Link to="/">
+          <Link to="/jan_14">
             <input type="button" value="Go Back" />
           </Link>
       </form>

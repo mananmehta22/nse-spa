@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './Format.css'
 import { toast } from 'react-toastify'
 import axios from 'axios';
 
+
 const Jan_08 = () => {
-const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   const loadData = async () => {
     const response = await axios.get("http://localhost:5000/jan_08");
@@ -18,6 +19,7 @@ const [data, setData] = useState([]);
 
   return (
     <div style={{marginTop: "160px"}}>
+      <h1>January 2008 Report</h1>
       <table className='styled-table'>
         <thead>
           <tr>
@@ -50,7 +52,7 @@ const [data, setData] = useState([]);
                 <td>{item.r2}</td>
                 <td>{item.volatility}</td>
                 <td>{item.monthly_return}</td>
-                <td>{item.avg_impact_cost}</td>
+                <td>{item.avg_imp_cost}</td>
                 <td>
                   <Link to={`/update_08/${item.sr_no}`}>
                   <button className='btn btn-edit'>Edit</button>

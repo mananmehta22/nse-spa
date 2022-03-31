@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { toast } from 'react-toastify'
 import './Format.css'
+import { toast } from 'react-toastify'
+import axios from 'axios';
+
 
 const Jan_20 = () => {
   const [data, setData] = useState([]);
 
   const loadData = async () => {
-    const response = await axios.get("http://localhost:5000/jan_20");
+    const response = await axios.get("http://localhost:5000/");
     setData(response.data)
   };
 
@@ -18,6 +19,7 @@ const Jan_20 = () => {
 
   return (
     <div style={{marginTop: "160px"}}>
+      <h1>January 2020 Report</h1>
       <table className='styled-table'>
         <thead>
           <tr>
@@ -50,7 +52,7 @@ const Jan_20 = () => {
                 <td>{item.r2}</td>
                 <td>{item.volatility}</td>
                 <td>{item.monthly_return}</td>
-                <td>{item.avg_impact_cost}</td>
+                <td>{item.avg_imp_cost}</td>
                 <td>
                   <Link to={`/update_20/${item.sr_no}`}>
                   <button className='btn btn-edit'>Edit</button>
@@ -67,6 +69,6 @@ const Jan_20 = () => {
       </table>
     </div>
   )
-};
+}
 
 export default Jan_20

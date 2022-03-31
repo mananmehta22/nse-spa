@@ -1,0 +1,17 @@
+-nse-app: db
+    -tables
+        -jan_08
+        -jan_09
+        -jan_10
+        -jan_11
+        -jan_12
+        -jan_13
+        -jan_14
+        -jan_15
+        -jan_16
+        -jan_17
+        -jan_18
+        -jan_19
+        -jan_20
+        -jan_21
+        -jan_22

@@ -56,7 +56,10 @@ useEffect(() => {
 
   return (
     <div className="header">
-      <p className="logo">NSE Monthly Reports</p>
+      <Link to="/" >
+      <p className="logo" >NSE Monthly Reports
+      </p>
+      </Link>
       <div className="header-right">
         <Link to="/jan_08">
             <p 

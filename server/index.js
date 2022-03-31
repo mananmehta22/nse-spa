@@ -1,8 +1,8 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
 const dotenv = require('dotenv')
+const bodyParser = require('body-parser')
 
 dotenv.config(); 
 
@@ -15,8 +15,8 @@ const db = mysql.createPool({
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json())
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get("/", (req, res) => {
     const sqlShow = "SELECT * FROM nse_app.jan_22";
@@ -154,7 +154,7 @@ app.get("/jan_08", (req, res) => {
 })
 
 app.get("/jan_22/get/:sr_no", (req, res) => {
-    const { sr_no } = req.params;
+    const {sr_no} = req.params;
     const sqlGet = `SELECT * FROM nse_app.jan_22 where sr_no = ?`;
     db.query(sqlGet, sr_no, (error, result) => {
         if (error) {
@@ -318,11 +318,11 @@ app.get("/jan_08/get/:sr_no", (req, res) => {
     });
 })
 
-app.put("/jan_22/update/:sr_no", (res,req) => {
+app.put("/jan_22/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_22 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_22 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -330,11 +330,11 @@ app.put("/jan_22/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_21/update/:sr_no", (res,req) => {
+app.put("/jan_21/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_21 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_21 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -342,11 +342,11 @@ app.put("/jan_21/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_20/update/:sr_no", (res,req) => {
+app.put("/jan_20/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_20 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_20 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -354,11 +354,11 @@ app.put("/jan_20/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_19/update/:sr_no", (res,req) => {
+app.put("/jan_19/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_19 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_19 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -366,11 +366,11 @@ app.put("/jan_19/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_18/update/:sr_no", (res,req) => {
+app.put("/jan_18/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_18 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_18 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -378,11 +378,11 @@ app.put("/jan_18/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_17/update/:sr_no", (res,req) => {
+app.put("/jan_17/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_17 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_17 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -390,11 +390,11 @@ app.put("/jan_17/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_16/update/:sr_no", (res,req) => {
+app.put("/jan_16/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_16 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_16 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -402,11 +402,11 @@ app.put("/jan_16/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_15/update/:sr_no", (res,req) => {
+app.put("/jan_15/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_15 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_15 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -414,11 +414,11 @@ app.put("/jan_15/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_14/update/:sr_no", (res,req) => {
+app.put("/jan_14/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_14 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_14 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -426,11 +426,11 @@ app.put("/jan_14/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_13/update/:sr_no", (res,req) => {
+app.put("/jan_13/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_13 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_13 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -438,11 +438,11 @@ app.put("/jan_13/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_12/update/:sr_no", (res,req) => {
+app.put("/jan_12/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_12 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_12 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -450,11 +450,11 @@ app.put("/jan_12/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_11/update/:sr_no", (res,req) => {
+app.put("/jan_11/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_11 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_11 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -462,11 +462,11 @@ app.put("/jan_11/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_10/update/:sr_no", (res,req) => {
+app.put("/jan_10/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_10 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_10 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -474,11 +474,11 @@ app.put("/jan_10/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_09/update/:sr_no", (res,req) => {
+app.put("/jan_09/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_09 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_09 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }
@@ -486,11 +486,11 @@ app.put("/jan_09/update/:sr_no", (res,req) => {
     }); 
 })
 
-app.put("/jan_08/update/:sr_no", (res,req) => {
+app.put("/jan_08/update/:sr_no", (req,res) => {
     const { sr_no } = req.params;
-    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost} = req.body
-    const sqlUpdate = `UPDATE nse_app.jan_08 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_impact_cost = ? WHERE sr_no = ?`;
-    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_impact_cost, sr_no], (error, result) => {
+    const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
+    const sqlUpdate = `UPDATE nse_app.jan_08 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;
+    db.query(sqlUpdate, [security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost, sr_no], (error, result) => {
         if (error) {
             console.log(error);
         }

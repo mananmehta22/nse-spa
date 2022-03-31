@@ -97,7 +97,7 @@ const View = () => {
           <br  />
           <br  />
           <strong>Average Impact Cost</strong>
-          <span>{user.avg_impact_cost}</span>
+          <span>{user.avg_imp_cost}</span>
           <br  />
           <br  />
           <br  />
