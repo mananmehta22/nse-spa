@@ -28,7 +28,7 @@ const AddEdit = () => {
   const {sr_no} = useParams(); 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/jan_22/get/${sr_no}`)
+    axios.get(`http://localhost:5000/jan_10/get/${sr_no}`)
     .then((resp) => setState({...resp.data[0]}))
     
   }, [sr_no]) 
@@ -40,7 +40,7 @@ const AddEdit = () => {
     }
     else {
       axios
-        .put(`http://localhost:5000/jan_22/update/${sr_no}`, {
+        .put(`http://localhost:5000/jan_10/update/${sr_no}`, {
             security_symbol, 
             security_name, 
             industry, 

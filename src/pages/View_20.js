@@ -9,7 +9,7 @@ const View = () => {
   const { sr_no } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/jan_22/get/${sr_no}`)
+    axios.get(`http://localhost:5000/jan_20/get/${sr_no}`)
         .then((resp) => setUser({...resp.data[0] }));
       }, [sr_no]);
 
