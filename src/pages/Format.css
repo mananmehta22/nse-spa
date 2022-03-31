@@ -7,6 +7,8 @@
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
 }
 
+/** Table format for our data**/
+
 .styled-table thead tr {
     background-color: #009879;
     color: #ffffff;

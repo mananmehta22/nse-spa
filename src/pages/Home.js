@@ -9,11 +9,11 @@ const Home = () => {
   const [data, setData] = useState([]);
 
   const loadData = async () => {
-    const response = await axios.get("http://localhost:5000/");
+    const response = await axios.get("http://localhost:5000/"); // Fetch our data for the specific year, in this case 20222
     setData(response.data)
   };
 
-  useEffect(() => {
+  useEffect(() => { // Updating our DOM 
     loadData(); 
   }, []);
 
@@ -55,10 +55,10 @@ const Home = () => {
                 <td>{item.avg_imp_cost}</td>
                 <td>
                   <Link to={`/update_22/${item.sr_no}`}>
-                  <button className='btn btn-edit'>Edit</button>
+                  <button className='btn btn-edit'>Edit</button> // Edit button, taking us to the AddEdit page
                   </Link>
                   <Link to={`/view_22/${item.sr_no}`}>
-                  <button className='btn btn-view'>View</button>
+                  <button className='btn btn-view'>View</button> // View button, taking us to the View Page
                   </Link>
                 </td>
               </tr>

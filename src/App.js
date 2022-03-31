@@ -52,12 +52,12 @@ import Header from './components/Header.js';
 
 function App() {
   return (
-      <BrowserRouter>
+      <BrowserRouter> // Helps Us navigate to the different views of our various components in our application
     <div className="App">
       <Header />
-      <ToastContainer position='top-center' />
-      <Routes>
-        <Route exact path='/' element={<Home/>} />
+      <ToastContainer position='top-center' /> // All the Toasts will be reflected at the top center of the page
+      <Routes> // Multiple Nested Routes
+        <Route exact path='/' element={<Home/>} /> // Page Routing 
         <Route path='/update_22/:sr_no' element={<AddEdit/>} />
         <Route path='/update_21/:sr_no' element={<AddEdit_21/>} />
         <Route path='/update_20/:sr_no' element={<AddEdit_20/>} />

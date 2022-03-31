@@ -9,7 +9,7 @@ const View = () => {
   const { sr_no } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/jan_22/get/${sr_no}`)
+    axios.get(`http://localhost:5000/jan_22/get/${sr_no}`) // GET request for the data for the selected column based on its sr_no
         .then((resp) => setUser({...resp.data[0] }));
       }, [sr_no]);
 
@@ -104,7 +104,7 @@ const View = () => {
           <br  />
           <br  />
           <Link to="/">
-            <div className='btn btn-edit'>Go Back</div>
+            <div className='btn btn-edit'>Go Back</div> // To Go Back to the original table
           </Link>
         </div>
     </div>

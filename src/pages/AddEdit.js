@@ -5,7 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify'
 import './EditTemplate.css'
 
-const initialState = {
+const initialState = { // We will save the initial data using initialState
   sr_no: "",
   security_symbol: "",
   security_name: "",
@@ -21,27 +21,27 @@ const initialState = {
 }
 
 const AddEdit = () => {
-  const [ state, setState ] = useState(initialState);
+  const [ state, setState ] = useState(initialState); // we will store the initial and current or updated value using useState Hook
   const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = state;
 
-  const history = useNavigate();
+  const history = useNavigate(); // After the form is submitted, useNavigate will help to redirect user to a specific URL
 
-  const {sr_no} = useParams(); 
+  const {sr_no} = useParams(); // To get the parameter requested by the user
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/jan_22/get/${sr_no}`)
+    axios.get(`http://localhost:5000/jan_22/get/${sr_no}`) // It will return the response object from the URL mentioned from an endpoint
     .then((resp) => setState({ ...resp.data[0] }))
     
   }, [sr_no]) 
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Default Action will not occur as it cancels the event, if cancelable
     if (!security_symbol || ! security_name || !industry || !equity_cap || !free_float || !weightage || !r2 || !volatility || !monthly_return || !avg_imp_cost) {
         toast.error("Please provide value for each field");
     }
     else
       if(sr_no) {
-      axios.put(`http://localhost:5000/jan_22/update/${sr_no}`, {
+      axios.put(`http://localhost:5000/jan_22/update/${sr_no}`, { // Overwrite the data at a specific endpoint
               security_symbol, 
               security_name, 
               industry, 
@@ -58,12 +58,12 @@ const AddEdit = () => {
             setState({ security_symbol:"", security_name:"", industry:"", equity_cap:"", free_float:"", weightage:"", beta:"", r2:"", volatility:"", monthly_return:"", avg_imp_cost:"" })
           })
           .catch((err) => toast.error(err.response.data));
-      toast.success("Fields Updated Successfully")
+      toast.success("Fields Updated Successfully") // Toast is like a Pop Up but more aesthetically pleasing
     }
     setTimeout(() => history("/"),1000);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) => { // Any Input by the user, will be registered by handleinputChange
     const { security_symbol, value } = e.target;
     setState({ ...state, [security_symbol]: value
     });

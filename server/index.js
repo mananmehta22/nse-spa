@@ -1,12 +1,12 @@
 const express = require('express');
-const cors = require('cors');
+const cors = require('cors'); // Cross Origin Resource Sharinf
 const mysql = require('mysql2');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv') // for our .env file
 const bodyParser = require('body-parser')
 
-dotenv.config(); 
+dotenv.config(); //configuration
 
-const db = mysql.createPool({
+const db = mysql.createPool({ // using process.env to get the DB credentials
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -14,11 +14,11 @@ const db = mysql.createPool({
 });
 
 const app = express();
-app.use(cors());
-app.use(bodyParser.json())
+app.use(cors()); // Middleware to access the front end 
+app.use(bodyParser.json()) // Process data sent through HTTP request body
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => { // Our Home Page GET request to print the page
     const sqlShow = "SELECT * FROM nse_app.jan_22";
     db.query(sqlShow, (err, result) => {
         console.log("Error", err);
@@ -153,7 +153,7 @@ app.get("/jan_08", (req, res) => {
     })
 })
 
-app.get("/jan_22/get/:sr_no", (req, res) => {
+app.get("/jan_22/get/:sr_no", (req, res) => { // GET Request to view the record of an individual cell
     const {sr_no} = req.params;
     const sqlGet = `SELECT * FROM nse_app.jan_22 where sr_no = ?`;
     db.query(sqlGet, sr_no, (error, result) => {
@@ -342,7 +342,7 @@ app.put("/jan_21/update/:sr_no", (req,res) => {
     }); 
 })
 
-app.put("/jan_20/update/:sr_no", (req,res) => {
+app.put("/jan_20/update/:sr_no", (req,res) => { // PUT Request to Update the information
     const { sr_no } = req.params;
     const {security_symbol, security_name, industry, equity_cap, free_float, weightage, beta, r2, volatility, monthly_return, avg_imp_cost} = req.body
     const sqlUpdate = `UPDATE nse_app.jan_20 SET security_symbol = ?, security_name = ?, industry = ?, equity_cap = ?, free_float = ?, weightage = ?, beta = ?, r2 = ?, volatility = ?, monthly_return = ?, avg_imp_cost = ? WHERE sr_no = ?`;

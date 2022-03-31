@@ -71,3 +71,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Setup env
 Create an env file just like the env.shadow file present and enter the database credentials in it.
+
+## Run the Express Server
+Run the express server before the react app to fetch the required endpoints from the database.
+
+## Different Components, Same Code but Different Result
+Designed with multiple functional components, with same code and logic, but minor changes such as hitting different endpoints with different data.
