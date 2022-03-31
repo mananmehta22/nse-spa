@@ -2,17 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
+const dotenv = require('dotenv')
 
-const host = process.env.HOST;
-const user = process.env.USER
-const password = process.env.PASSWORD
-const database = process.env.DATABASE
+dotenv.config(); 
 
 const db = mysql.createPool({
-    host: `${host}`,
-    user: `${user}`,
-    password: `${password}`,
-    database: `${database}`
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
 });
 
 const app = express();
